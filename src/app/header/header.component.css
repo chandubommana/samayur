@@ -1,0 +1,19 @@
+.header{
+  background-color: #AF634C;
+}
+.container{
+  max-height: 80px;
+}
+
+.nav-link{
+  color: #0D3F6E;
+}
+.nav-link:hover{
+  color: #AF634C;
+}
+
+.active{
+  color:#AF634C;
+  
+  font-weight: bold;
+}

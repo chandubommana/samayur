@@ -1,0 +1,4 @@
+:host {
+  position: relative; /* or fixed if you want a sticky header */
+  z-index: 10; /* higher than home background */
+}
