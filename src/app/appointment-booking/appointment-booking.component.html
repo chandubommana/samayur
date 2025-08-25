@@ -1,0 +1,55 @@
+<div class="modal-header d-flex justify-content-between">
+  <h5 class="modal-title">Book Your Appointment</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+<div class="modal-body">
+  <div class="row align-items-center justify-content-center g-3">
+
+  
+    <div class="col-md-5 text-center">
+      <img src="./appointment.png" alt="Appointment" class="img-fluid rounded shadow-sm" />
+    </div>
+
+  
+    <div class="col-md-6">
+      <!-- Dates -->
+      <div class="mb-3">
+        <h6 class="fw-semibold">Select Date</h6>
+        <div class="date-list mb-3">
+          <button *ngFor="let d of dateList"
+                  class="btn me-2 mb-2"
+                  (click)="selectDate(d)"
+                  [ngClass]="{'active': selectedDate?.toDateString() === d.toDateString()}">
+            {{ d | date:'MMM d' }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Slots -->
+      <div class="mb-3" *ngIf="timeSlots.length > 0">
+        <h6 class="fw-semibold">Available Slots</h6>
+        <div class="slot-list">
+          <button *ngFor="let slot of timeSlots"
+                  class="btn me-2 mb-2"
+                  (click)="selectSlot(slot)"
+                  [disabled]="slot.booked"
+                  [ngClass]="{'selected': slot.selected, 'booked': slot.booked}">
+            {{ slot.time }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Confirm -->
+      <div class="d-flex justify-content-center mt-3">
+        <button class="btn btn-primary w-50"
+                (click)="confirmDateTime()"
+                [disabled]="!selectedSlot"
+                data-bs-dismiss="modal">
+          Confirm
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

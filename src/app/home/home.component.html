@@ -1,75 +1,76 @@
-<section 
-  class="position-relative vh-100 text-white" 
-  style="background-image: url('https://api.builder.io/api/v1/image/assets/TEMP/410a239d55fddb1295542f052f76656632c59775?width=2884'); background-size: cover; background-position: center;">
+<!-- Hero Section -->
+<!-- Hero Section -->
+<section class="hero-section position-relative text-white">
+  <!-- Background slideshow -->
+  <div class="hero-bg" 
+       *ngFor="let img of images; let i = index"
+       [style.backgroundImage]="'url(' + img + ')'"
+       [class.active]="i === currentIndex">
+  </div>
 
-  <div class="container-fluid position-relative h-100 d-flex align-items-center justify-content-center p-0">
-    <div class="row w-100 m-0 h-100">
+  <div class="container h-100 d-flex flex-column justify-content-between">
     
-      <div class="col-lg-12 d-flex flex-column justify-content-between align-items-center h-100 py-5">
-        
-        <!-- Heading Section -->
-        <div class="w-75 d-flex justify-content-end h-50  align-items-center">
-          <div>
-            <h1 class="display-4 fw-bold mb-3">
-              Looking for an <br><strong>Expert Doctor</strong>
-            </h1>
-            <p class="lead mb-4">
-              Samayur is home to some of the eminent doctors in the world.
-            </p>
-          </div>
-        </div>
-
-       
-        <div class="row g-3 align-items-center justify-content-center h-50">
-          <div class="item col-6 col-sm-4 col-md-3 col-lg-auto">
-            <button class="btn bg-primary text-white w-100 d-flex flex-column align-items-center justify-content-center service-btn">
-              <i class="bi bi-heart-pulse"></i>
-              <span>Allopathy</span>
-            </button>
-          </div>
-          <div class="item col-6 col-sm-4 col-md-3 col-lg-auto">
-            <button class="btn bg-secondary text-white w-100 d-flex flex-column align-items-center justify-content-center service-btn">
-              <i class="bi bi-leaf"></i>
-              <span>Ayurvedic</span>
-            </button>
-          </div>
-          <div class="item col-6 col-sm-4 col-md-3 col-lg-auto">
-            <button class="btn bg-primary text-white w-100 d-flex flex-column align-items-center justify-content-center service-btn">
-              <i class="bi bi-droplet"></i>
-              <span>Homeopathy</span>
-            </button>
-          </div>
-          <div class="item col-6 col-sm-4 col-md-3 col-lg-auto">
-            <button class="btn bg-secondary text-white w-100 d-flex flex-column align-items-center justify-content-center service-btn">
-              <i class="bi bi-star"></i>
-              <span>Autism Therapy</span>
-            </button>
-          </div>
-          <div class="item col-6 col-sm-4 col-md-3 col-lg-auto">
-            <button class="btn bg-primary text-white w-100 d-flex flex-column align-items-center justify-content-center service-btn">
-              <i class="bi bi-person"></i>
-              <span>Senior Care</span>
-            </button>
-          </div>
-        </div>
-
+    <div class="row h-100 d-flex align-items-center content text-center text-md-end">
+      <div class="col-12 px-3">
+        <h1 class="display-4 fw-bold mb-3">
+          Looking for an <br><strong>Expert Doctor</strong>
+        </h1>
+        <p class="lead mb-4">
+          Samayur is home to some of the eminent doctors in the world.
+        </p>
       </div>
+    </div>
 
+    <div class="row g-3 justify-content-center align-items-center service-row px-2 pb-4">
+      <div class="col-6 col-sm-4 col-md-3 col-lg-auto" *ngFor="let category of categories">
+        <button class="btn text-white w-100 d-flex flex-column align-items-center justify-content-center service-btn"
+                [ngClass]="category.isPrimary ? 'bg-primary' : 'bg-secondary'"
+                (click)="openQuestionaire()">
+          <i [class]="category.iconClass"></i>
+          <span>{{ category.name }}</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WhatsApp Floating Button -->
-<div class="position-fixed top-50 start-0 translate-middle-y z-3">
-  <div class="d-flex align-items-center justify-content-center bg-success rounded-end-4 border-top border-white shadow-lg"
-       style="width: 96px; height: 80px;">
+
+<!-- Floating WhatsApp -->
+<div class="position-fixed top-50 start-0 translate-middle-y z-3 whatsapp-btn">
+  <div class="d-flex align-items-center justify-content-center bg-success rounded-end-4 border-top border-white shadow-lg">
     <img src="https://api.builder.io/api/v1/image/assets/TEMP/68f2cd48266677ed43937cd5c3745062028b0281?width=144"
          alt="WhatsApp"
-         class="img-fluid"
-         style="width: 64px; height: 64px;">
+         class="img-fluid whatsapp-icon">
   </div>
 </div>
 
+<!-- Overlay & Modal -->
+<div *ngIf="showQuestionnaire" 
+     class="overlay top-0 start-0 position-fixed w-100 h-100"
+     (click)="closeQuestionnaire()"></div>
+
+<section *ngIf="showQuestionnaire" 
+         id="questionaire" 
+         class="p-5 position-fixed top-50 start-50 translate-middle">
+  <app-questionaire (closeModalEvent)="closeQuestionnaire()"></app-questionaire>
+</section>
+
+<!-- Other Sections -->
 <section id="about-us">
   <app-about-us></app-about-us>
+</section>
+<section id="doctorsProfile">
+  <app-doctor-profiles></app-doctor-profiles>
+</section>
+<section id="departments">
+  <app-departments></app-departments>
+</section>
+<section id="review">
+  <app-review></app-review>
+</section>
+<section>
+  <app-call-to-action></app-call-to-action>
+</section>
+<section id="footer">
+  <app-footer></app-footer>
 </section>

@@ -1,0 +1,32 @@
+.floating-circle {
+  width: 12rem;
+  height: 12rem;
+}
+.circle-content {
+  width: 12rem;
+  height: 12rem;
+  position: relative;
+}
+.circle-img {
+  width: 7rem;
+  height: 7rem;
+}
+.inner-circle{
+    width: 12rem; height: 12rem;
+}
+
+/* Responsive Fixes */
+@media (max-width: 991px) {
+  .floating-circle {
+    position: static !important;
+    margin: 1.5rem auto 0 auto;
+    transform: none !important;
+  }
+}
+@media (max-width: 576px) {
+  .inner-circle{
+    width: 10rem; height: 1rem;
+  
+    
+  }
+}

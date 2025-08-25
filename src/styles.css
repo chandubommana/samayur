@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+.no-scroll {
+  position: fixed;
+  overflow: hidden !important;
+  width: 100%;
+  height: 100%;
+}
+body, html {
+  overflow-x: hidden;
+ 
+}

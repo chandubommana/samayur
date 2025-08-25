@@ -1,0 +1,13 @@
+/* Doctor image with shield-style cut */
+/* Doctor image overlap */
+.doctor-wrapper {
+  z-index: 2;
+}
+
+.doctor-img {
+  max-width: 300px;
+  border-radius: 0; 
+}
+.container-fluid{
+    background: linear-gradient(135deg, #b5651d, #8b4513);
+}

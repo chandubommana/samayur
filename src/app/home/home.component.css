@@ -1,9 +1,3 @@
-/* :host {
-  display: block;
-
-  height: calc(100vh - 80px);
-} */
-
 .category-card {
   border-radius: 0.75rem;
   padding: 1rem;
@@ -13,35 +7,244 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
-
 .category-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-.container-fluid{
-  width: 100vw;
+.container-fluid {
+  width: 100;
 }
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: -1; /* keeps background behind content */
+}
+
+.hero-bg.active {
+  opacity: 1;
+}
+
+
+/* ================= Brand colors ================= */
 .bg-primary {
-  background-color:#0D3F6E !important;
+  background-color: #0D3F6E !important;  /* Navy Blue */
 }
-
-
 .bg-secondary {
-  background-color: #b06a4f !important;
+  background-color: #b06a4f !important;  /* Brownish */
 }
 
- .service-btn {
-    min-width: 180px;   
-    min-height: 160px;  
-    font-size: 1rem;    
-  }
+/* Additional theme colors */
+.bg-success {
+  background-color: #198754 !important;  /* Green */
+}
+.bg-danger {
+  background-color: #dc3545 !important;  /* Red */
+}
+.bg-warning {
+  background-color: #ffc107 !important;  /* Yellow */
+}
+.bg-info {
+  background-color: #0dcaf0 !important;  /* Cyan */
+}
+.bg-light {
+  background-color: #f8f9fa !important;  /* Light gray */
+}
+.bg-dark {
+  background-color: #212529 !important;  /* Dark gray */
+}
 
+/* Text color helpers */
+.text-primary   { color: #0D3F6E !important; }
+.text-secondary { color: #b06a4f !important; }
+.text-success   { color: #198754 !important; }
+.text-danger    { color: #dc3545 !important; }
+.text-warning   { color: #ffc107 !important; }
+.text-info      { color: #0dcaf0 !important; }
+.text-light     { color: #f8f9fa !important; }
+.text-dark      { color: #212529 !important; }
+
+/* ================= Typography ================= */
+.lead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+/* Overlay for modals */
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 1040;
+}
+
+/* Questionnaire modal */
+#questionaire {
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  background: #fff;
+  max-height: 650px;
+  min-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+/* Hero section */
+.hero-section,
+.bg-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* Services row */
+.service-row {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 80px;
+}
+@media (max-width: 991px) {
+  .service-row {
+    position: static !important;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Service buttons */
+.service-btn {
+  min-width: 180px;
+  min-height: 160px;
+  font-size: 1rem;
+}
+.service-btn i {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* WhatsApp floating button */
+.whatsapp-btn {
+  width: 96px;
+  height: 80px;
+}
+.whatsapp-icon {
+  width: 64px;
+  height: 64px;
+}
+
+/* Large desktops */
+@media (min-width: 1200px) {
+  .service-btn {
+    min-width: 200px;
+    min-height: 180px;
+    font-size: 1.1rem;
+  }
   .service-btn i {
-    font-size: 2.5rem; 
-    margin-bottom: 0.5rem;
+    font-size: 3rem;
   }
-  .lead{
-    font-family: poppins;
-    font-weight: 500;
+}
+
+@media(min-width:1440px){
+  .content {
+    margin-right: 50px;
+    margin-top: 100px;
   }
+  .bg-cover {
+    max-height: 100vh;
+  }
+}
+
+/* Tablets & small laptops */
+@media (max-width: 991px) {
+  .service-btn {
+    min-width: 150px;
+    min-height: 140px;
+    font-size: 0.95rem;
+  }
+  #questionaire {
+    min-width: 90%;
+    max-height: 80vh;
+  }
+  .whatsapp-btn {
+    width: 72px;
+    height: 64px;
+  }
+  .whatsapp-icon {
+    width: 48px;
+    height: 48px;
+  }
+  .bg-cover {
+    background-size: contain;
+    background-position: top center;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-btn {
+    min-width: 120px;
+    min-height: 120px;
+    font-size: 0.9rem;
+  }
+  .service-btn i {
+    font-size: 2rem;
+  }
+  #questionaire {
+    width: 95%;
+    max-height: 80vh;
+    padding: 1rem;
+  }
+  .lead {
+    font-size: 0.9rem;
+  }
+  h1.display-4 {
+    font-size: 1.8rem;
+  }
+  .whatsapp-btn {
+    width: 60px;
+    height: 52px;
+  }
+  .whatsapp-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .hero-section,
+  .bg-cover {
+    min-height: 100vh;
+    background-size: contain;
+    background-position: top center;
+  }
+}
+
+@media (max-width: 575px) {
+  .service-btn {
+    min-width: 100px;
+    min-height: 100px;
+    font-size: 0.8rem;
+  }
+  .service-btn i {
+    font-size: 1.8rem;
+  }
+  #questionaire {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,33 @@
+/* Image size control */
+.modal-body img {
+  max-height: 300px;
+  object-fit: contain;
+}
+
+/* Active date button */
+.date-list .btn.active {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+/* Selected slot */
+.slot-list .btn.selected {
+  background-color: #198754;
+  color: white;
+  border-color: #198754;
+}
+
+/* Booked slot */
+.slot-list .btn.booked {
+  background-color: #dee2e6;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Responsive stacking */
+@media (max-width: 768px) {
+  .modal-body .row {
+    flex-direction: column;
+  }
+}
